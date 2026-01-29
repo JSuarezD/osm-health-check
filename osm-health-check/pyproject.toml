@@ -1,0 +1,24 @@
+[project]
+name = "osm-health-check"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Jorge Suárez",email = "jsuadia@gmail.com"}
+]
+license = "Apache-2.0"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+]
+
+[tool.poetry]
+packages = [{include = "osm_health_check", from = "src"}]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "pre-commit (>=4.5.1,<5.0.0)"
+]
