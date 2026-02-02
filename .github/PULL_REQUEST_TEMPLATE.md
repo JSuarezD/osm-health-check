@@ -6,7 +6,7 @@ This Pull Request introduces...
 ---
 
 ## 🛠️ Changes Made
-
+- Use bullets for all your changes.
 
 ---
 
@@ -14,12 +14,6 @@ This Pull Request introduces...
 ### Automated Tests
 - [ ] **Unit Tests:** e.g. `pytest`
 - [ ] **Integration Tests:** Verified interaction between...
-
-### Manual Verification
-- **Environment:** 
-- **Steps:** 
-    1. [First step to test your changes]
-    2. [What should happen after step 1]
 
 ### Visual Evidence (if applicable)
 > [Evidence goes here]
