@@ -36,8 +36,20 @@ pre-commit autoupdate
 pre-commit install --hook-type commit-msg --hook-type pre-push
 ```
 
-## 📝 TODO
+---
 
-- Create a "How to Contribute?" section following the guidelines of a `CONTRIBUTING.md` file.
-- Create a "Contact" section.
-- Create a `LICENSE` file and associate it with the `pyproject.toml` file for the project.
+## 🤝 How to Contribute?
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+Please refer to our [CONTRIBUTING.md](.github/CONTRIBUTING.md) for detailed guidelines on how to get started, our code of conduct, and the process for submitting pull requests.
+
+## 📧 Contact
+If you have questions, feedback, or need support, feel free to reach out:
+- **Maintainer:** Jorge Suárez Díaz
+- **Email:** jsuadia@gmail.com
+- **Issues:** Use the [GitHub Issues](https://github.com/JSuarezD/osm-health-check/issues) page for bug reports or feature requests.
+
+## 📄 License
+This project is licensed under the **Apache-2.0 License** - see the [LICENSE](LICENSE) file for details.
+
+<!-- ## 📝 TODO -->
