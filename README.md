@@ -9,7 +9,7 @@ This repository contains a project for monitoring the health status of Open Sour
   - [⚙️ Prerequisites](#️-prerequisites)
     - [Test Environment](#test-environment)
     - [Configuring `pre-commit`](#configuring-pre-commit)
-  - [📝 TODO](#-todo)
+ <!-- ##  - [📝 TODO](#-todo)  -->
 
 ## ⚙️ Prerequisites
 
