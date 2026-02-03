@@ -11,6 +11,8 @@ license-files = [
 readme = "README.md"
 requires-python = ">=3.14,<4.0"
 dependencies = [
+    "fastapi[standard] (>=0.128.0,<0.129.0)",
+    "uvicorn (>=0.40.0,<0.41.0)"
 ]
 
 [tool.poetry]
