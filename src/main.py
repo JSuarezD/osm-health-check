@@ -1,4 +1,3 @@
-from typing import Union
 from fastapi import FastAPI, HTTPException
 import requests
 from requests.adapters import HTTPAdapter
