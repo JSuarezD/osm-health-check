@@ -10,7 +10,7 @@ GITHUB_STATUS_URL = "https://www.githubstatus.com/api/v2/status.json"
 
 session = requests.Session()
 retries = Retry(
-    total=5,                
+    total=4,                
     backoff_factor=0.1,     
     status_forcelist=[500, 502, 503, 504], 
     allowed_methods=["GET"] 
