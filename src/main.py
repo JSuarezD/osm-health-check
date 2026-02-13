@@ -30,7 +30,7 @@ class StatusResponse(BaseModel):
 @app.get("/github-status", response_model=StatusResponse)
 def read_github_status():
     try:
-        response = session.get(GITHUB_STATUS_URL, timeout=(2, 5)) 
+        response = session.get(GITHUB_STATUS_URL, timeout=(0.1)) 
         response.raise_for_status()
         return response.json()
 
