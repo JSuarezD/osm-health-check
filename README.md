@@ -43,6 +43,25 @@ poetry run fastapi dev main.py
 ```
 ---
 
+## 🐳 Containerization of the project
+You can launch this project as a container using **Docker**. 
+
+### Prerequisites
+* [Docker](https://docs.docker.com/get-docker/)
+
+### 🚀 Getting Started
+#### 1. Build the image
+To build the Docker image and install all dependencies managed by Poetry::
+```bash
+docker build -t my-image .
+```
+
+#### 2. Run the Container
+Start the application in an isolated environment:
+```bash
+docker run -d --name my-container -p 80:80 my-image
+```
+
 ## 🤝 How to Contribute?
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 

@@ -1,0 +1,31 @@
+# Git
+.git
+.gitignore
+
+# Python virtual environments
+.venv
+env/
+venv/
+ENV/
+
+# Python cache and bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Poetry specific
+.poetry/
+
+# Docker & CI/CD
+docker-compose.yml
+.github/
+.gitlab-ci.yml
+
+# IDEs and OS files
+.vscode/
+.idea/
+.DS_Store
+*.swp
