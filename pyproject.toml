@@ -26,4 +26,12 @@ build-backend = "poetry.core.masonry.api"
 [dependency-groups]
 dev = [
     "pre-commit (>=4.5.1,<5.0.0)",
+    "ruff (>=0.15.1,<0.16.0)",
+    "black (>=26.1.0,<27.0.0)",
+    "bandit (>=1.9.3,<2.0.0)",
+    "safety (>=3.7.0,<4.0.0)",
+    "flake8 (>=7.3.0,<8.0.0)",
 ]
+
+[tool.ruff.lint]
+ignore = ["E501"]
