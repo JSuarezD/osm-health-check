@@ -15,21 +15,23 @@ jobs:
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           ref: feat/add-ci-workflow
 
       - name: Set up Python 3.14
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
-          python-version: '3.14'
+          python-version: "3.14"
 
       # Instalación de Poetry
       - name: Install Poetry
-        uses: snok/install-poetry@v1
-        with:
-          virtualenvs-create: true
-          virtualenvs-in-project: true
+        run: pip install poetry==2.3.1
+  
+        name: Configure Poetry
+        run: 
+          poetry config virtualenvs.create true
+          poetry config virtualenvs.in-project true
 
       # Instalación de dependencias con Poetry (incluye dev por defecto)
       - name: Install dependencies with Poetry
@@ -38,7 +40,7 @@ jobs:
 
       # Escáner con trivy
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.33.1
+        uses: aquasecurity/trivy-action@c1824fd6edce30d7ab345a9989de00bbd46ef284 # v0.34.0
         with:
           scan-type: 'fs'
           exit-code: '1'
@@ -46,7 +48,7 @@ jobs:
 
       # Escáner con OSV
       - name: Run OSV-Scanner
-        uses: "google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@v2.3.3"
+        uses: "google/osv-scanner-action@c5996e0193a3df57d695c1b8a1dec2a4c62e8730" # v2.3.3
         with:
           scan-args: |-
             --recursive
