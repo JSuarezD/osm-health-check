@@ -1,0 +1,50 @@
+name: "Python Check"
+
+on:
+  push:
+    branches:
+      - feat/add-ci-workflow
+
+permissions:
+  contents: read
+
+jobs:
+  validate-contribution:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: feat/add-ci-workflow
+
+      - name: Set up Python 3.14
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: "3.14"
+
+      # Instalación de Poetry
+      - name: Install Poetry
+        run: pip install poetry
+  
+      # Instalación de dependencias con Poetry (incluye dev por defecto)
+      - name: Install dependencies with Poetry
+        run: poetry install --no-interaction
+
+      # Escáner con trivy
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@c1824fd6edce30d7ab345a9989de00bbd46ef284 # v0.34.0
+        with:
+          scan-type: 'fs'
+          exit-code: '1'
+          severity: 'CRITICAL,HIGH'
+          scan-ref: "."
+          
+      # Escáner con OSV
+      - name: Run OSV-Scanner
+        uses: "google/osv-scanner-action/osv-scanner-action@c5996e0193a3df57d695c1b8a1dec2a4c62e8730" # v2.3.3
+        with:
+          scan-args: |-
+            --recursive
+            ./
