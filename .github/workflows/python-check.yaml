@@ -1,9 +1,10 @@
 name: "Python Check"
 
 on:
-  push:
+  pull_request:
     branches:
-      - feat/add-ci-workflow
+      - main
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: read
@@ -16,8 +17,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        with:
-          ref: feat/add-ci-workflow
 
       - name: Set up Python 3.14
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
@@ -32,20 +31,21 @@ jobs:
       - name: Install dependencies with Poetry
         run: poetry install --no-interaction
 
+      # Formateo con Black 
       - name: Check formatting with Black
         run: poetry run black --check .
-
-      - name: Lint with Flake8
-        run: poetry run flake8 .
-
+            
+      # Linting y auto-fix con Ruff
       - name: Lint and Fix with Ruff
         run: poetry run ruff check .
-
+      
+      # Escaneo de seguridad con Bandit
       - name: Security scan with Bandit
         run: poetry run bandit -r .
 
+      # Escaneo de seguridad con Safety
       - name: Dependency security check with Safety
-        run: poetry run safety check
+        run: poetry run safety --key ${{ secrets.SAFETY_API_KEY }} scan
 
       # Escáner con trivy
       - name: Run Trivy vulnerability scanner
