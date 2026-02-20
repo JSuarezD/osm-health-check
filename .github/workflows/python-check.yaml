@@ -26,17 +26,11 @@ jobs:
 
       # Instalación de Poetry
       - name: Install Poetry
-        run: pip install poetry==2.3.1
+        run: pip install poetry
   
-      - name: Configure Poetry
-        run: |
-          poetry config virtualenvs.create true
-          poetry config virtualenvs.in-project true
-
       # Instalación de dependencias con Poetry (incluye dev por defecto)
       - name: Install dependencies with Poetry
         run: poetry install --no-interaction
-
 
       # Escáner con trivy
       - name: Run Trivy vulnerability scanner
@@ -45,7 +39,8 @@ jobs:
           scan-type: 'fs'
           exit-code: '1'
           severity: 'CRITICAL,HIGH'
-
+          scan-ref: "."
+          
       # Escáner con OSV
       - name: Run OSV-Scanner
         uses: "google/osv-scanner-action/osv-scanner-action@c5996e0193a3df57d695c1b8a1dec2a4c62e8730" # v2.3.3
