@@ -44,7 +44,7 @@ jobs:
         run: poetry run bandit -r .
 
       - name: Dependency security check with Safety
-        run: poetry run safety check
+        run: poetry run safety scan
 
       # Escáner con trivy
       - name: Run Trivy vulnerability scanner
