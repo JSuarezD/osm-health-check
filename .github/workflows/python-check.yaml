@@ -34,11 +34,7 @@ jobs:
       # Formateo con Black 
       - name: Check formatting with Black
         run: poetry run black --check .
-      
-      # Linting con Flake8
-      - name: Lint with Flake8
-        run: poetry run flake8 .
-      
+            
       # Linting y auto-fix con Ruff
       - name: Lint and Fix with Ruff
         run: poetry run ruff check .
