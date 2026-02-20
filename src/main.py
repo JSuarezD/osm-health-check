@@ -52,15 +52,11 @@ def read_github_status():
 
     except requests.exceptions.HTTPError as e:
         # Errores 4xx o 5xx que NO fueron reintentados o fallaron tras reintentos
-        raise HTTPException(
-            status_code=e.response.status_code, detail=f"Error de API: {str(e)}"
-        )
+        raise HTTPException(status_code=e.response.status_code, detail=f"Error de API: {str(e)}")
 
     except requests.exceptions.ConnectionError:
         # Problemas de DNS, red caída, o rechazo de conexión
-        raise HTTPException(
-            status_code=502, detail="Error de red al intentar conectar con GitHub"
-        )
+        raise HTTPException(status_code=502, detail="Error de red al intentar conectar con GitHub")
 
     except requests.exceptions.RequestException as e:
         # Otros
