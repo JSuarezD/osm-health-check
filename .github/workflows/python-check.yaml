@@ -32,6 +32,21 @@ jobs:
       - name: Install dependencies with Poetry
         run: poetry install --no-interaction
 
+      - name: Check formatting with Black
+        run: poetry run black --check .
+
+      - name: Lint with Flake8
+        run: poetry run flake8 .
+
+      - name: Lint and Fix with Ruff
+        run: poetry run ruff check .
+
+      - name: Security scan with Bandit
+        run: poetry run bandit -r .
+
+      - name: Dependency security check with Safety
+        run: poetry run safety check
+
       # Escáner con trivy
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@c1824fd6edce30d7ab345a9989de00bbd46ef284 # v0.34.0
@@ -40,7 +55,7 @@ jobs:
           exit-code: '1'
           severity: 'CRITICAL,HIGH'
           scan-ref: "."
-          
+
       # Escáner con OSV
       - name: Run OSV-Scanner
         uses: "google/osv-scanner-action/osv-scanner-action@c5996e0193a3df57d695c1b8a1dec2a4c62e8730" # v2.3.3
