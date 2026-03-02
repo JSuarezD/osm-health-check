@@ -1,9 +1,6 @@
 name: ci
 on:
-  pull_request:
-    branches:
-      - main
-    types: [closed]
+  push:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
