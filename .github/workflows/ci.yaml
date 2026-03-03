@@ -20,6 +20,7 @@ jobs:
           pip install poetry
 
       - name: Verify poetry lockfile
+        run: |
           poetry lock --check
           
       - name: Log in to GHCR
