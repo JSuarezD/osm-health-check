@@ -1,25 +1,27 @@
+FROM cgr.dev/chainguard/python:3.14-dev AS builder
 
-FROM python:3.14-slim
+ENV POETRY_NO_INTERACTION=1 \
+    POETRY_VIRTUALENVS_IN_PROJECT=true \
+    POETRY_VIRTUALENVS_CREATE=true
 
-ENV POETRY_HOME="/opt/poetry" \
-    POETRY_VIRTUALENVS_CREATE=false \
-    PATH="/opt/poetry/bin:$PATH"
+WORKDIR /app
 
-
-RUN curl -sSL https://install.python-poetry.org | python3 -
-    
-    
-WORKDIR /code
-
+RUN pip install --no-cache-dir poetry==1.8.2
 
 COPY pyproject.toml poetry.lock* ./
 
+RUN poetry install --no-root --only main
 
-RUN poetry install --no-interaction --no-ansi --no-root
+FROM cgr.dev/chainguard/python:3.14
 
+WORKDIR /app
 
+COPY --from=builder /app/.venv /app/.venv
+COPY . .
 
-COPY . . 
+ENV PATH="/app/.venv/bin:$PATH" \
+    PYTHONUNBUFFERED=1
 
+EXPOSE 80
 
-CMD ["fastapi", "run", "src/main.py", "--port", "80"]
+ENTRYPOINT ["fastapi", "run", "src/main.py", "--port", "80"]
