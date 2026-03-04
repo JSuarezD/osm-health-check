@@ -6,7 +6,8 @@ ENV POETRY_HOME="/opt/poetry" \
     PATH="/opt/poetry/bin:$PATH"
 
 
-RUN curl -sSL https://install.python-poetry.org | python3 -
+RUN curl -sSL https://install.python-poetry.org | python3 - -- --install-option "POETRY_HOME=/opt/poetry"
+ENV PATH="$POETRY_HOME/bin:$PATH"
     
     
 WORKDIR /code
