@@ -1,5 +1,5 @@
 
-FROM python:3.14
+FROM python:3.14-slim
 
 ENV POETRY_HOME="/opt/poetry" \
     POETRY_VIRTUALENVS_CREATE=false \
